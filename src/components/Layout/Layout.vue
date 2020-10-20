@@ -1,73 +1,207 @@
 <template>
-  <div >
-//Start Header Section
-<b-row >  
-    <b-col md="12" > 
-      <div  class="fixed-top">
-       <b-navbar toggleable="lg"  type="dark" variant="info">
-           <b-navbar-brand href="#">NavBar</b-navbar-brand>
-             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-                 <b-collapse id="nav-collapse" is-nav>
-                    <b-navbar-nav>
-                        <b-nav-item href="#">Link</b-nav-item>
-                        <b-nav-item href="#" disabled>Disabled</b-nav-item>
-                    </b-navbar-nav>
 
-                    <!-- Right aligned nav items -->
-                    <b-navbar-nav class="ml-auto">
-                        <b-nav-form>
-                        <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-                        <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-                        </b-nav-form>
+        <div> 
+           <nav class="navbar navbar-warning bg-success">
+              <div class="container-fluid kj">                             
+                     <div class="col-lg-4 col-md-4 col-12"><i class="fa fa-mobile" aria-hidden="true"></i> 01711-900989,  01778322222</div>
+                     <div class="col-lg-4 col-md-4 col-12"> <marquee>La-Montana, House #33, Road: Gareeb-E-Newaz Avenue, Sector:11,Uttara,Dhaka-1230,Bangladesh.</marquee></div>
+                     <div class="col-lg-4 col-md-4 col-12"> <i class="fa fa-calendar" aria-hidden="true"></i> Sat-Thurs: (9.am-10.pm), Friday: (8.am-5.pm) </div>
+     
+              </div>
+           </nav> 
+        <nav class="navbar f sticky-top navbar-expand-lg navbar-light bg-light navsa">
+            <div class="container">
+            <a class="navbar-brand" href="/"><img src="@/assets/logo.png" alt="" class="g"> </a>
+           
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse float-pull" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                <li class="nav-item active hl">
+                    <!-- <router-link to="{{name: 'Index'}}"  class="nav-link">Home <span class="sr-only">(current)</span></router-link> -->
+                    <router-link class="nav-link" :to="{ path: '/' }"> <i class="fa fa-home" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</router-link>
+                </li>
+               
+                <li class="nav-item active hl">
+                    <router-link to="/test-view"  class="nav-link"> <i class="fa fa-heartbeat" aria-hidden="true"></i> Test Menu</router-link>
+                </li>
+                  <li class="nav-item active">
+                    <router-link to="/doctor"  class="nav-link"> <i class="fa fa-user-md" aria-hidden="true"></i> Our Doctors</router-link>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="fa fa-plus-square" aria-hidden="true"></i> Online Service
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <router-link to="/sample"  class="dropdown-item"> <i class="fa fa-ambulance" aria-hidden="true"></i> Home Sample Collection</router-link>
+                    <router-link to="/home_report"  class="dropdown-item"> <i class="fa fa-h-square" aria-hidden="true"></i> Home Report Delivery</router-link>
+                    <router-link to="/online_report"  class="dropdown-item"> <i class="fa fa-stethoscope" aria-hidden="true"></i> Online Report</router-link>
+                   
+          
+                    </div>
+                </li>
+                  <li class="nav-item active">
+                    <router-link to="/contact"  class="nav-link"> <i class="fa fa-address-book" aria-hidden="true"></i> Contact Us</router-link>
+                </li>
+                </ul>
+             </div>
+                 <form class="form-inline my-2 my-lg-0">
+               <router-link to="/appoinment"> <button class="btn btn-outline-success my-2 my-sm-0"> <i class="fa fa-medkit" aria-hidden="true"></i>  Appointment</button></router-link>
+                </form>
+             </div>  
+                          
+            </nav>
 
-                        <b-nav-item-dropdown text="Lang" right>
-                        <b-dropdown-item href="#">EN</b-dropdown-item>
-                        <b-dropdown-item href="#">ES</b-dropdown-item>
-                        <b-dropdown-item href="#">RU</b-dropdown-item>
-                        <b-dropdown-item href="#">FA</b-dropdown-item>
-                        </b-nav-item-dropdown>
+           
+                <router-view/>
+               
+        <div class="kjk navsa">
+            <div class="container">
+                <br>
+                <div class="row jkh">
+                <div class="col-lg-4 col-md-4 col-12">
+                    <h4 class="l">Contact Us</h4>
+                    <p>La-Montana, House #33,
+                    Road: Gareeb-E-Newaz Avenue,
+                    Sector:11,Uttara,Dhaka-1230,Bangladesh.<br>
+                    Phone : +88 01778311111<br>
+                    Phone : +88 01778322222<br>
+                    Email: info@ehealthcare.com
 
-                        <b-nav-item-dropdown right>
-                        <!-- Using 'button-content' slot -->
-                        <template v-slot:button-content>
-                            <em>User</em>
-                        </template>
-                        <b-dropdown-item href="#">Profile</b-dropdown-item>
-                        <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-                        </b-nav-item-dropdown>
-                    </b-navbar-nav>
-            </b-collapse>
-         </b-navbar>
-       </div>
-     </b-col>
-  </b-row>
-//Start Main Body Section
-        <b-container fluid>
-             <b-row >
-                   <router-view/>
-             </b-row>
-        </b-container>  
-
-       <b-row >
-           <div class="fixed-bottom bg-info" >
-            <h1>Foter </h1>
-          </div>
-       </b-row>
-  </div>
+                   </p>             
+                    
+                </div>	
+                 <div class="col-lg-4 col-md-4 col-12 jjh">
+                    <h4 class="l">Important Links</h4>
+                     <a href="https://neblbd.com/">Nur-E-Elahi Businss Limited</a><br>
+                     <a href="https://kitesfashion.com/">Kites Fashion</a><br>
+                     <a href="https://bglc.net/">Bangladesh Global Learning Center</a>
+                </div>		  		  
+                 <div class="col-lg-4 col-md-4 col-12">
+                <h4>Follow Us</h4>
+             
+              <a href="#"  title="Facebook"><img src="https://cdn1.iconfinder.com/data/icons/social-media-2112/29/Asset_2-512.png" style="height:40px;padding:3px;"></a>
+              <a href="#"  title="linkedin"><img src="https://nepa.com/wp-content/uploads/2017/09/linkedin-logo.png" style="height:40px;padding:3px;"></a>
+                <a href="#"  title="Instagram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" style="height:40px;padding:3px;"></a>
+                       
+                </div>
+               </div>
+               <br>
+             </div>
+         </div>
+       <div class="footer ">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-6 col-md-6 col-12 hht"><p>© Copyright 2020. E HealthCare Bangladesh.</p></div>
+                <div class="col-lg-6 col-md-6 col-12 jjh hht">Develop BY <a href="">NEBL IT</a> </div>
+            </div>
+        </div>
+      </div>
+</div>
 </template>
+    <script>
+    // import axios from 'axios';
 
-<script>
-export default {
-  name: 'Nav',
-  props: {
-    msg: String
-  }
-}
-</script>
+
+    export default {
+    data() {
+      return {
+        posts: [],
+        errors: []
+      }
+    },
+  
+
+    // created() {
+    //   axios.get(`http://localhost:8000/api/company`)
+    //   .then(response => {
+    //   console.log(response.data)
+    //     this.posts = response.data
+    //   })
+    //   .catch(e => {
+    //     this.errors.push(e)
+    //   })
+
+    // }
+    }
+    </script>
 
 <style scoped>
+.kj{
+  color:white
+}
 .hi{
     color:#bb2124;
     height:30px;
+}
+.g{
+    height:60px;
+    width:70px;
+}
+.jkh{
+    text-align:left;
+    color: ghostwhite;
+}
+.footer{
+color:white;
+background-color: #4BB543
+
+}
+
+.jjh a{
+    color:ghostwhite;
+}
+.jjh a:hover{
+    text-decoration: none;
+    color:#030504;
+}
+.l{
+       color:#ffffff;
+       font-weight:bold;
+}
+.kjk{
+    background-color: slategrey;
+}
+footer {
+  background: #16222A;
+  background: -webkit-linear-gradient(59deg, #3A6073, #16222A);
+  background: linear-gradient(59deg, #3A6073, #16222A);
+  color: white;
+  margin-top:100px;
+}
+
+footer a {
+  color: #fff;
+  font-size: 14px;
+  transition-duration: 0.2s;
+}
+
+footer a:hover {
+  color: #FA944B;
+  text-decoration: none;
+}
+
+.copy {
+  font-size: 12px;
+  padding: 10px;
+  border-top: 1px solid #FFFFFF;
+}
+
+.footer-middle {
+  padding-top: 2em;
+  color: white;
+}
+  .navsa{
+  box-shadow:
+ 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+}
+ .hht{
+   margin-top:10px;
+ } 
+.nav-link:hover{
+  color:rgb(218, 35, 59)!important;
 }
 </style>
