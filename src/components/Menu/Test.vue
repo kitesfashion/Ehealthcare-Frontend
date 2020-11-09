@@ -1,153 +1,46 @@
 <template>
-
 <div>
-    
  <div class="container-fluid">   
             <div class="row">             
                 <div class="col-lg-12 col-md-12 col-12 bn">
-               <a  href="#"><img src="https://www.ringbio.com/sites/default/files/2020-03/covid-banner_0.jpg" alt="" class="kjl"> </a> 
+               <a  href="#"><img :src="kl+banner.image1" alt="" class="kjl"> </a> 
                 </div>
             </div>
             <br>
             <div class="row">             
-                <div class="col-lg-3 cl-md-3 col-12">
+                <div class="col-lg-3 col-md-3 col-xl-3 col-sm-12 col-12">
                   <div class="sidebar">
                     <h5 class="bg-success" style="padding:15px; color:white">Ours Test Category</h5>
-                    <a href="#home">Blood Test</a>
-                    <a href="#news">Cardiovascular Diseases</a>
-                    <a href="#contact">SPECIALTY TESTS FOR CARDIOLOGY</a>
-                    <a href="#about">Gene Test For Breast & Overain Cancer</a>
-                    <a href="#about">Gynecology Special Test</a>
-                    <a href="#about">Metabolic Disorders & Developmental Delay</a>
-                    <a href="#about">Molecular Oncology Tests ( Hematology )</a>
-                    <a href="#about">Neurological & Psychological Dieases</a>
+                    <a :href="'/test_view/'+ item.id" v-for="item in category" :key="item.id">{{item.test_category}}</a>
+
+
+                    <!-- <a :href="'/blog_view/' + blogg.id" v-for="blogg in blogview" :key="blogg.id">{{blogg.name.substring(0,100)}}</a>  -->
+                   
                     </div>
                 </div>
-                 <div class="col-lg-9 cl-md-9 col-12">
+                 <div class="col-lg-9 col-xl-9  col-md-9 col-sm-12  col-12">
                   <div class="row">
-               <div class="col-lg-3 cl-md-3 col-12 gg" >
+
+               <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6  col-12 gg" v-for="t in test" :key='t.id' >
                    <div class="card cards" style="width:99%">
-                    <img src="https://www.zenhealthcare.co.uk/wp-content/uploads/2017/04/14559839465447Blood-Test-image.jpg" class="card-img-top zoom" alt="...">
+                    <img :src="kl+t.image" class="card-img-top zoom" alt="...">
                     <div class="card-body">
-                      <a href="#"><h4 class="card-title">Blood Test</h4></a>  
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                      <a href="#"><h4 class="card-title">{{t.name}}</h4></a>  
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><span style="color:gray">Duration: 1 Days</span></li>
-                        <li class="list-group-item"><span style="color:red;font-size:23px;"> ৳ 3000</span>  <span style="color:gray">Per Person</span></li>
-                        <li class="list-group-item"><span style="color:red">EMI </span> <span style="color:gray">from ৳ 1000 </span></li>
+                        <li class="list-group-item"><span style="color:gray">Duration: {{t.duration}} Days</span></li>
+                        <li class="list-group-item"><span style="color:red;font-size:23px;"> ৳ {{t.price}}</span>  <span style="color:gray">Per Person</span></li>
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="float-left" ><button class="btn  btn-info" data-toggle="modal" data-target="#staticBackdrop">View Details</button></a>
-                        <a href="#" class="float-right" ><button class="btn  btn-danger" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Book Now</button></a>
+                        <a href="#" class="float-left" ><button class="btn  btn-info" @click="signleTest(t.id)" data-toggle="modal" data-target="#staticBackdrop">View Details</button></a>
+
+
+                        <a href="#" class="float-right" ><button class="btn  btn-danger" @click="Book(t.id)" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Book Now</button></a>
                     </div>
                     </div>
                </div>
-                  <div class="col-lg-3 cl-md-3 col-12 gg">
-                   <div class="card cards" style="width:99%">
-                    <img src="https://images.medicinenet.com/images/slideshow/heart-disease-visual-guide-s2-heart-attack.jpg" class="card-img-top zoom" alt="...">
-                    <div class="card-body">
-                      <a href="#"><h4 class="card-title">Cardiovascular Diseases</h4></a>  
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><span style="color:gray">Duration: 1 Days</span></li>
-                        <li class="list-group-item"><span style="color:red;font-size:23px;"> ৳ 3000</span>  <span style="color:gray">Per Person</span></li>
-                        <li class="list-group-item"><span style="color:red">EMI </span> <span style="color:gray">from ৳ 1000 </span></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="float-left" ><button class="btn  btn-info" data-toggle="modal" data-target="#staticBackdrop">View Details</button></a>
-                        <a href="#" class="float-right" ><button class="btn  btn-danger" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Book Now</button></a>
-                    </div>
-                    </div>
-               </div>   <div class="col-lg-3 cl-md-3 col-12 gg">
-                   <div class="card cards" style="width:99%">
-                    <img src="https://www.biospectrumasia.com/uploads/articles/1-12654.jpg" class="card-img-top zoom" alt="...">
-                    <div class="card-body">
-                      <a href="#"><h4 class="card-title">SPECIALTY TESTS FOR CARDIOLOGY</h4></a>  
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><span style="color:gray">Duration: 1 Days</span></li>
-                        <li class="list-group-item"><span style="color:red;font-size:23px;"> ৳ 3000</span>  <span style="color:gray">Per Person</span></li>
-                        <li class="list-group-item"><span style="color:red">EMI </span> <span style="color:gray">from ৳ 1000 </span></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="float-left" ><button class="btn  btn-info" data-toggle="modal" data-target="#staticBackdrop">View Details</button></a>
-                        <a href="#" class="float-right" ><button class="btn  btn-danger" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Book Now</button></a>
-                    </div>
-                    </div>
-               </div>   <div class="col-lg-3 cl-md-3 col-12 gg">
-                   <div class="card cards" style="width:99%">
-                    <img src="https://images.takeshape.io/f1ba446a-c0cf-4882-b0c9-50298f143ec2/dev/f9c97dc1-7510-445b-9677-20c08bbd4b50/721882?auto=compress%2Cformat&crop=center" class="card-img-top zoom" alt="...">
-                    <div class="card-body">
-                      <a href="#"><h4 class="card-title">Gynecology Special Test</h4></a>  
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><span style="color:gray">Duration: 1 Days</span></li>
-                        <li class="list-group-item"><span style="color:red;font-size:23px;"> ৳ 3000</span>  <span style="color:gray">Per Person</span></li>
-                        <li class="list-group-item"><span style="color:red">EMI </span> <span style="color:gray">from ৳ 1000 </span></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="float-left" ><button class="btn  btn-info" data-toggle="modal" data-target="#staticBackdrop">View Details</button></a>
-                        <a href="#" class="float-right" ><button class="btn  btn-danger" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Book Now</button></a>
-                    </div>
-                    </div>
-               </div>   <div class="col-lg-3 cl-md-3 col-12 gg">
-                   <div class="card cards" style="width:99%">
-                    <img src="https://www.zenhealthcare.co.uk/wp-content/uploads/2017/04/14559839465447Blood-Test-image.jpg" class="card-img-top zoom" alt="...">
-                    <div class="card-body">
-                      <a href="#"><h4 class="card-title">Blood Test</h4></a>  
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><span style="color:gray">Duration: 1 Days</span></li>
-                        <li class="list-group-item"><span style="color:red;font-size:23px;"> ৳ 3000</span>  <span style="color:gray">Per Person</span></li>
-                        <li class="list-group-item"><span style="color:red">EMI </span> <span style="color:gray">from ৳ 1000 </span></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="float-left" ><button class="btn  btn-info" data-toggle="modal" data-target="#staticBackdrop">View Details</button></a>
-                        <a href="#" class="float-right" ><button class="btn  btn-danger" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Book Now</button></a>
-                    </div>
-                    </div>
-               </div>   <div class="col-lg-3 cl-md-3 col-12 gg">
-                   <div class="card cards" style="width:99%">
-                    <img src="https://www.zenhealthcare.co.uk/wp-content/uploads/2017/04/14559839465447Blood-Test-image.jpg" class="card-img-top zoom" alt="...">
-                    <div class="card-body">
-                      <a href="#"><h4 class="card-title">Blood Test</h4></a>  
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><span style="color:gray">Duration: 1 Days</span></li>
-                        <li class="list-group-item"><span style="color:red;font-size:23px;"> ৳ 3000</span>  <span style="color:gray">Per Person</span></li>
-                        <li class="list-group-item"><span style="color:red">EMI </span> <span style="color:gray">from ৳ 1000 </span></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="float-left" ><button class="btn  btn-info" data-toggle="modal" data-target="#staticBackdrop">View Details</button></a>
-                        <a href="#" class="float-right" ><button class="btn  btn-danger" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Book Now</button></a>
-                    </div>
-                    </div>
-               </div>   <div class="col-lg-3 cl-md-3 col-12 gg">
-                   <div class="card cards" style="width:99%">
-                    <img src="https://www.zenhealthcare.co.uk/wp-content/uploads/2017/04/14559839465447Blood-Test-image.jpg" class="card-img-top zoom" alt="...">
-                    <div class="card-body">
-                      <a href="#"><h4 class="card-title">Blood Test</h4></a>  
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><span style="color:gray">Duration: 1 Days</span></li>
-                        <li class="list-group-item"><span style="color:red;font-size:23px;"> ৳ 3000</span>  <span style="color:gray">Per Person</span></li>
-                        <li class="list-group-item"><span style="color:red">EMI </span> <span style="color:gray">from ৳ 1000 </span></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="float-left" ><button class="btn  btn-info" data-toggle="modal" data-target="#staticBackdrop">View Details</button></a>
-                        <a href="#" class="float-right" ><button class="btn  btn-danger" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Book Now</button></a>
-                    </div>
-                    </div>
-               </div>
-               </div>
-                  
+               
+               </div>                
                 </div>
             </div>
 
@@ -156,43 +49,44 @@
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
   Launch static backdrop modal
 </button> -->
-
+  
 <!-- Details for Testing -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Blood Test</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">{{single.name}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">  
-        <img src="https://www.zenhealthcare.co.uk/wp-content/uploads/2017/04/14559839465447Blood-Test-image.jpg" style="width:100%;">
+        <img :src="kl+single.image" style="width:100%;">
         <br>
      
         <table class="table table-hover table-bordered table-info">
            <tr>
-            <td colspan="2"><b>Blood Test</b></td>    
+            <td colspan="2"><b>{{single.name}}</b></td>    
           </tr>
           <tr>
             <td>Duration</td>
-            <td>1 Day</td>
+            <td v-if="single.duration==1">{{single.duration}}  Day</td>
+            <td v-if="single.duration>1">{{single.duration}}  Days</td>
           </tr>
             <tr>
-            <td>Cost</td>
-            <td>3000 Tk.</td>
+            <td>Test Fee</td>
+            <td>{{single.price}} Tk.</td>
           </tr>
           <tr>
             <td>Report</td>
-            <td>Home Delivery & Online</td>
+            <td>{{single.report}}</td>
           </tr>
             <tr>
             <td>Appointment</td>
-            <td>01318712782</td>
+            <td>{{single.appointment}}</td>
           </tr>
            <tr class="text-justify">
-            <td colspan="2">Patients are most commonly referred after having abnormal blood tests that suggest there might be a blood or bone marrow disorder or following an abnormal blood count (a test to check the types and numbers of cells in your blood, including red blood cells, white blood cells and platelets).</td>    
+            <td colspan="2">{{single.details}}</td>    
           </tr>
           </table>    
       </div>
@@ -215,46 +109,51 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-       <form>
+       <form @submit.prevent="addTest">
       <div class="modal-body"> 
             <div class="row">
-          <div class="form-group col-md-12">
-            <!-- <label for="recipient-name" class="col-form-label">Patient Name</label> -->
-            <input type="text" class="form-control" required placeholder="Patient Name" id="recipient-name">
+              <div class="form-group col-md-12">
+            <div v-if="success" class="alert alert-success">
+            Thanks For Test Appoinment,Please Wait For Confirmation
+            </div>
+            </div>
+            <input type="text"   v-model="testappoinment.testid">
+          <div class="form-group col-md-12">       
+            <input type="text" class="form-control"  v-model="testappoinment.patient" required placeholder="Patient Name" id="recipient-name">
           </div>
            <div class="form-group col-md-8">
             <!-- <label for="recipient-name" class="col-form-label">Phone</label> -->
-            <input type="number" class="form-control" min="1" required placeholder="Phone" id="recipient-name">
+            <input type="number" class="form-control" v-model="testappoinment.phone" min="1" required placeholder="Phone" id="recipient-name">
           </div>
            <div class="form-group col-md-4">
             <!-- <label for="recipient-name" class="col-form-label">Age</label> -->
-            <input type="number" placeholder="Age" min="1" class="form-control" id="recipient-name">
+            <input type="number" placeholder="Age" min="1" v-model="testappoinment.age" class="form-control" id="recipient-name">
           </div>
              <div class="form-group col-md-12">
             <!-- <label for="recipient-name" class="col-form-label">Age</label> -->
-            <input type="text" placeholder="Your address" required class="form-control" id="recipient-name">
+            <input type="text" placeholder="Your address" v-model="testappoinment.address" required class="form-control" id="recipient-name">
           </div>
             <div class="form-group col-md-6">
             <!-- <label for="recipient-name" class="col-form-label">Phone</label> -->
-            <input type="date" class="form-control"  required id="recipient-name">
+            <input type="date" class="form-control" v-model="testappoinment.date"  required id="recipient-name">
           </div>
             <div class="form-group col-md-6">
             <!-- <label for="recipient-name" class="col-form-label">Phone</label> -->
-            <input type="time" class="form-control" required id="recipient-name">
+            <input type="time" class="form-control" v-model="testappoinment.time" required id="recipient-name">
           </div>
             <div class="form-group col-md-6" itemref="">
-            <select class="form-control" required >
+            <select class="form-control" required v-model="testappoinment.sample" >
                 <option value="">Sample Collection</option>
-                <option value="">Home</option>
-                <option value="">Hospital</option>
+                <option value="Home">Home</option>
+                <option value="Hospital">Hospital</option>
               </select>
           </div>
             <div class="form-group col-md-6">
-            <select class="form-control"  required>
+            <select class="form-control"  required  v-model="testappoinment.report">
                 <option value="">Report Collection</option>
-                <option value="">Home</option>
-                <option value="">Hospital</option>
-                <option value="">Online</option>
+                <option value="Home">Home</option>
+                <option value="Hospital">Hospital</option>
+                <option value="Online">Online</option>
             </select>
           </div>
           </div>
@@ -272,74 +171,152 @@
 </template>
 
 <script>
-
+ import axios from 'axios';
+ import config from '@/config'
 export default {
- name: 'Test',
-   components: {
-    
-   
-  
-}
-}
+ data() {
+      return {
+        category: [],
+        banner: [],
+        errors: [],
+        success: false,
+        test:{},
+        Testid:0,
+       kl:config.My_url,
+       single:{}, 
+       book:'',
+       testappoinment:{testid:7},
+      }
+    },
+    created() {
+       axios.get(`${config.BASE_URL}/api/test_category`)
+              .then(response => {
+              console.log(response.data)
+                this.category = response.data
+              })
+              .catch(e => {
+                this.errors.push(e)
+              }),
+        axios.get(`${config.BASE_URL}/api/banner`)
+            .then(response => {
+            console.log(response.data)
+              this.banner = response.data
+            })
+            .catch(e => {
+              this.errors.push(e)
+            })
+
+    },
+    mounted() { 
+      
+     this.Testid = this.$route.params.tid;
+     this.testView();
+     this.signleTest();
+
+   },
+      methods : {
+            testView(){
+                axios.get(`${config.BASE_URL}/api/test_view/`+ this.Testid)            
+                    .then(response => { 
+                       console.log(response.data)
+                       this.test = response.data
+                       })
+                          
+                 .catch(function (error) {
+                console.log(error);
+               });
+             },
+            signleTest(id){
+                axios.get(`${config.BASE_URL}/api/single_view/`+id)            
+                    .then(response => { 
+                       console.log(response.data)
+                       this.single = response.data
+                       })
+                          
+                 .catch(function (error) {
+                console.log(error);
+              });
+             },
+        Book(id){
+            this.book=id;          
+        },
+       addTest() {
+             axios.post(`${config.BASE_URL}/api/testappoinment`, this.testappoinment)
+                .then( res => {
+                     console.log(res.data)             
+                        this.flashMessage.success({
+                            title: 'Thanks For Test Appointment',
+                            message: 'We Are Happy to you',
+                            time: 5000,
+                            flashMessageStyle: {
+                                backgroundColor: 'linear-gradient(#e66465, #9198e5)'
+                            }
+                        });
+                   this.testappoinment=''
+                 this.success = true;
+                })
+              }
+            }
+          }
 </script>
 
-<style>
-.kjl{
- width: 100%;
-}
-.cards{
-margin-bottom: 35px;
-text-align:left;
-}
-.cards a{
-    text-decoration: none ;
-}
-.cards a:hover{
-    color:coral
-}
-.cards li{
-    color:rgb(7, 13, 24);
-     font-weight: bold;
-}
-.card:hover{
-  box-shadow: 0 10px 10px rgb(37, 37, 37) ;
- 
-}
-.zoom:hover {
-  transform: rotateY(180deg);
-}
-.gg img{
-    height:200px;
-}
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color: #f1f1f1;
-  height: 100%;
-  overflow: auto;
-}
+          <style>
+          .kjl{
+          width: 100%;
+          }
+          .cards{
+          margin-bottom: 35px;
+          text-align:left;
+          }
+          .cards a{
+              text-decoration: none ;
+          }
+          .cards a:hover{
+              color:coral
+          }
+          .cards li{
+              color:rgb(7, 13, 24);
+              font-weight: bold;
+          }
+          .card:hover{
+            box-shadow: 0 10px 10px rgb(37, 37, 37) ;
+          
+          }
+          .zoom:hover {
+            transform: rotateY(180deg);
+          }
+          .gg img{
+              height:200px;
+          }
+          .sidebar {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #f1f1f1;
+            height: 100%;
+            overflow: auto;
+          }
 
-/* Sidebar links */
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;
-  border:solid 1px rgb(255, 255, 255);
-}
+          /* Sidebar links */
+          .sidebar a {
+            display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
+            border:solid 1px rgb(255, 255, 255);
+          }
 
-/* Active/current link */
-.sidebar a.active {
-  background-color: #4CAF50;
-  color: white;
-}
+          /* Active/current link */
+          .sidebar a.active {
+            background-color: #4CAF50;
+            color: white;
+          }
 
-/* Links on mouse-over */
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-  text-decoration: none;
-}
+          /* Links on mouse-over */
+          .sidebar a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+            text-decoration: none;
+          }
 
-</style>
+          </style>

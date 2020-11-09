@@ -6,16 +6,16 @@
                <div class="row ">    
                <div class="col-lg-2 col-md-1 col-12 "></div>
 
-               <div class="col-lg-9 col-md-12 col-12 ">
+               <div class="col-lg-9 col-md-12 col-12 "><br><br>
                    <h3 class="bluef font-weight-bold text-justify gggh">
-                        “ Physicians require advance diagnostic test for appropriate treatment decision But specialty tests are not generally available in local labs. Therefore, lots of investigations are being outsourced to foreign labs causing delay in Service and higher cost per test. Realizing the problem, a group of Pathologists and Laboratory Scientists has established CRL Diagnostics. We are the First Dhaka Based Specialty Laboratory making Specialty Molecular Testing service available and affordable”
+                       {{quoto.quoto}}
                         </h3> 
                <div class="row ">    
 
                <div class="col-lg-6 col-md-6 col-12 ">
-                <img src="https://image.freepik.com/free-photo/doctor-smiling-with-stethoscope_1154-36.jpg" alt="" class="gkg"> 
-                   <span class="sir gggh"> DR.HN Ashikur Rahaman ( Chairman ) </span>
-
+                <img :src="quoto.image" alt="" class="gkg"> 
+                   <span class="sir gggh"> {{quoto.quotoname}} </span>
+<br><br><br>
                </div>
                <div class="col-lg-6 col-md-6 col-12 "></div>
                </div>
@@ -30,8 +30,27 @@
 </template>
 
 <script>
+    import axios from 'axios';
+    import config from '@/config'
 export default {
+data() {
+      return {
+        quoto: [],
+        errors: []
+      }
+    },
+  
+    created() {
+      axios.get(`${config.BASE_URL}/api/mission`)
+      .then(response => {
+      console.log(response.data)
+        this.quoto = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
 
+    }
 }
 </script>
 

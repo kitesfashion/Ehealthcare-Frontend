@@ -8,136 +8,56 @@
                     <br>
             </div>
          
-             <div class="col-lg-1 cl-md-1 col-1"></div>
-          <div class="col-lg-10 cl-md-10 col-12">
+             <div class="col-lg-1 col-md-1 col-xl-1 col-sm-12 col-12"></div>
+          <div class="col-lg-10 col-md-10 col-xl-10 col-sm-12 col-12">
               <div class="row">
 
-
-               <div class="col-lg-3 cl-md-3 col-12 gg">
+               <div class="col-lg-4 col-md-4 col-xl-3 col-sm-6 col-12 gg" v-for="item in category" :key="item.id">
                    <div class="card" style="width:99%">
                      <div class="img-wrapper">
-                    <img src="https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprodmigration%2Fweb%2Fbin%2F254f2c7f-9ed2-3acd-8e43-9849a98c6766.jpg?crop=780%2C520%2C0%2C0" class="card-img-top inner-img" alt="...">
+                    <img :src="item.image" class="card-img-top inner-img" alt="...">
                      </div>
                     <div class="card-body">
-             <router-link to="/test-view"><h5>Blood Test</h5></router-link>
-
-                      <!-- <a href="test-view"><h5 class="card-title">Blood Test</h5></a>   -->
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+             <router-link :to="'/test_view/' +item.id"><h5>{{item.test_category}}</h5></router-link>
                     </div>
                  
                     </div>
                </div>
 
+               </div>
+               </div>
+               <div class="col-lg-1 col-md-1 col-xl-1 col-sm-12 col-12"></div>
 
-                 <div class="col-lg-3 cl-md-3 col-12 gg">
-                   <div class="card" style="width:99%">
-                     <div class="img-wrapper">
-                    <img src="https://www.evidence4health.org/sites/readit/files/styles/nugget-mobile/public/content/paragraphs/text/images/2020-09-02/SARS_COV2-infection.jpg?itok=o0uzX9T8&timestamp=1599041420" class="card-img-top inner-img" alt="...">
-                      </div>
-                    <div class="card-body">
-                      
-                  <router-link to="/test-view"><h5>MOLECULAR TEST</h5></router-link>
-
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-               
-                    </div>
-               </div>
-                 <div class="col-lg-3 cl-md-3 col-12 gg">
-                   <div class="card" style="width:99%">
-                     <div class="img-wrapper">
-                    <img src="https://www.endocrineweb.com/sites/default/files/imagecache/gallery-large/wysiwyg_imageupload/37373/2019/09/05/StomachPain_97160154.jpg" class="card-img-top inner-img" alt="...">
-                      </div>
-                    <div class="card-body">
-                      
-             <router-link to="/test-view"><h5>DIABETES, ENDOCRINE & GESTRO</h5></router-link>
-
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-                 
-                    </div>
-               </div>
-                 <div class="col-lg-3 cl-md-3 col-12 gg">
-                   <div class="card" style="width:99%">
-                     <div class="img-wrapper">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSuG2Pe_BY6ugzQM-It-DXoX5ra6fKFY68olw&usqp=CAU" class="card-img-top inner-img" alt="...">
-                      </div>
-                    <div class="card-body">
-                      
-             <router-link to="/test-view"><h5>NEUROLOGY SPECIAL TEST</h5></router-link>
-
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-                 
-                    </div>
-               </div>
-                 <div class="col-lg-3 cl-md-3 col-12 gg">
-                 <div class="card" style="width:99%">
-                     <div class="img-wrapper">
-                    <img src="https://medesol.com/wp-content/uploads/2020/07/gynec.blog_.jpg" class="card-img-top inner-img" alt="...">
-                      </div>
-                    <div class="card-body">
-                     
-             <router-link to="/test-view"><h5>GYNECOLOGY SPECIAL TEST </h5></router-link>
-
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-                  
-                    </div>
-               </div>
-                
-                 <div class="col-lg-3 cl-md-3 col-12 gg">
-                <div class="card" style="width:99%">
-                     <div class="img-wrapper">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTTDpLeQxeS3UzGmWyQ1AnyMTSjIgYPdIjSZA&usqp=CAU" class="card-img-top inner-img" alt="...">
-                      </div>
-                    <div class="card-body">
-                     
-             <router-link to="/test-view"><h5>PEDIATRICS SPECIAL TEST</h5></router-link>
-
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-                  
-                    </div>
-               </div>
-                 <div class="col-lg-3 cl-md-3 col-12 gg">
-                   <div class="card" style="width:99%">
-                     <div class="img-wrapper">
-                    <img src="https://post.healthline.com/wp-content/uploads/2020/08/coagulation-tests_thumb.jpg" class="card-img-top inner-img" alt="...">
-                      </div>
-                    <div class="card-body">
-                      <a href="#"></a> 
-             <router-link to="/test-view"><h5 >coagulation tests </h5></router-link>
-
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    </div>
-                   
-                    </div>
-               </div>
-                 <div class="col-lg-3 cl-md-3 col-12">
-                   <div class="card" style="width:99%">
-                     <div class="img-wrapper">
-                    <img src="https://akashbariholidays.com/resources/akasbari_holidays_tour_packages/package_95/ho%20chi%20minh%202.jpg" class="card-img-top inner-img" alt="...">
-                    </div>
-                    <div class="card-body">
-                   
-             <router-link to="/test-view"><h5>Cox's Bazar Queen of natural beauty</h5></router-link>
-
-                    </div>
-                  
-                    </div>
-               </div>
-               </div>
-               </div>
-                <div class="col-lg-1 cl-md-1 col-1"></div>
         </div>
   </div>
 </div>
 </template>
 
 <script>
+    import axios from 'axios';
+    import config from '@/config'
+  
+       
 export default {
+data() {
+      return {
+        category: [],
+        errors: []
+      }
+    },
+  
 
+    created() {
+      axios.get(`${config.BASE_URL}/api/test_category`)
+      .then(response => {
+      console.log(response.data)
+        this.category = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+
+    }
 }
 </script>
 

@@ -12,6 +12,9 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import FlashMessage from '@smartweb/vue-flash-message';
+
+ 
 
 
 
@@ -21,15 +24,23 @@ library.add(fas)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
+Vue.use(FlashMessage);
+
+
+//Router ------------------------------------------------
 const router = new VueRouter({
   mode: "history",
   routes: routes,
   scrollBehavior() {
     document.getElementById('app').scrollIntoView();
 }
+
 });
 new Vue({
   el: "#app",
   router: router,
   render: (h) => h(App),
+
+  
 });
+ 

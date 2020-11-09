@@ -20,7 +20,8 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: "Times New Roman", Helvetica, Arial, sans-serif; */
+  font-family: "Geneva", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -30,7 +31,13 @@ export default {
   
 }
 h1, h2, h3, h4, h5 {
-    font-family: "Bw Helder", Helvetica, sans-serif;
+    /* font-family: "Times New Roman", Helvetica, sans-serif; */
+    /* font-family: "Arial Verdana", Helvetica, sans-serif; */
+    /* font-family: "Lucida Console", Helvetica, sans-serif; */
+    /* font-family: "Monospace", Helvetica, sans-serif; */
+    /* font-family: "Courier New", Helvetica, sans-serif; */
+    font-family: "Lucida Bright", Helvetica, sans-serif;
+    /* font-family: "Lucida Console", Helvetica, sans-serif; */
     font-weight: 700;
     line-height: 1.5em;
 }

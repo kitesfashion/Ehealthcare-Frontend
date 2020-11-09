@@ -3,15 +3,18 @@
         <div> 
            <nav class="navbar navbar-warning bg-success">
               <div class="container-fluid kj">                             
-                     <div class="col-lg-4 col-md-4 col-12"><i class="fa fa-mobile" aria-hidden="true"></i> 01711-900989,  01778322222</div>
-                     <div class="col-lg-4 col-md-4 col-12"> <marquee>La-Montana, House #33, Road: Gareeb-E-Newaz Avenue, Sector:11,Uttara,Dhaka-1230,Bangladesh.</marquee></div>
-                     <div class="col-lg-4 col-md-4 col-12"> <i class="fa fa-calendar" aria-hidden="true"></i> Sat-Thurs: (9.am-10.pm), Friday: (8.am-5.pm) </div>
+                     <div class="col-lg-4 col-md-4 col-12"><i class="fa fa-mobile" aria-hidden="true"></i> {{contact.mobile1}}, {{contact.mobile2}}</div>
+                     <div class="col-lg-4 col-md-4 col-12"> <marquee>{{contact.address}}</marquee></div>
+                     <div class="col-lg-4 col-md-4 col-12"> <i class="fa fa-calendar" aria-hidden="true"></i> {{contact.free}} </div>
      
               </div>
            </nav> 
         <nav class="navbar f sticky-top navbar-expand-lg navbar-light bg-light navsa">
             <div class="container">
-            <a class="navbar-brand" href="/"><img src="@/assets/logo.png" alt="" class="g"> </a>
+
+          <!-- <router-link to="/"  class="nav-link"><img src="@/assets/logo.png" alt="" class="g"></router-link> -->
+
+          <router-link to="/"  class="nav-link"><img :src="k+contact.image" alt="" class="g"></router-link>
            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -25,7 +28,7 @@
                 </li>
                
                 <li class="nav-item active hl">
-                    <router-link to="/test-view"  class="nav-link"> <i class="fa fa-heartbeat" aria-hidden="true"></i> Test Menu</router-link>
+                    <router-link to="/test_view/all "  class="nav-link"> <i class="fa fa-heartbeat" aria-hidden="true"></i> Test Menu</router-link>
                 </li>
                   <li class="nav-item active">
                     <router-link to="/doctor"  class="nav-link"> <i class="fa fa-user-md" aria-hidden="true"></i> Our Doctors</router-link>
@@ -39,7 +42,6 @@
                     <router-link to="/home_report"  class="dropdown-item"> <i class="fa fa-h-square" aria-hidden="true"></i> Home Report Delivery</router-link>
                     <router-link to="/online_report"  class="dropdown-item"> <i class="fa fa-stethoscope" aria-hidden="true"></i> Online Report</router-link>
                    
-          
                     </div>
                 </li>
                   <li class="nav-item active">
@@ -50,25 +52,22 @@
                  <form class="form-inline my-2 my-lg-0">
                <router-link to="/appoinment"> <button class="btn btn-outline-success my-2 my-sm-0"> <i class="fa fa-medkit" aria-hidden="true"></i>  Appointment</button></router-link>
                 </form>
-             </div>  
-                          
-            </nav>
-
-           
-                <router-view/>
-               
+             </div>                         
+            </nav>       
+                <router-view/>  
+                 
+                
+               <FlashMessage :position="'right bottom'"></FlashMessage>
         <div class="kjk navsa">
             <div class="container">
                 <br>
                 <div class="row jkh">
                 <div class="col-lg-4 col-md-4 col-12">
                     <h4 class="l">Contact Us</h4>
-                    <p>La-Montana, House #33,
-                    Road: Gareeb-E-Newaz Avenue,
-                    Sector:11,Uttara,Dhaka-1230,Bangladesh.<br>
-                    Phone : +88 01778311111<br>
-                    Phone : +88 01778322222<br>
-                    Email: info@ehealthcare.com
+                    <p>{{contact.address}}<br>
+                    Phone : {{contact.mobile1}}<br>
+                    Phone : {{contact.mobile2}}<br>
+                    Email: {{contact.email}}
 
                    </p>             
                     
@@ -102,29 +101,31 @@
 </div>
 </template>
     <script>
-    // import axios from 'axios';
-
+    import axios from 'axios';
+    import config from '@/config'
 
     export default {
     data() {
       return {
-        posts: [],
-        errors: []
+        contact: [],
+        errors: [],
+         k:config.My_url,
+        
       }
     },
   
+    created() {
+      
+       axios.get(`${config.BASE_URL}/api/company`)
+      .then(response => {
+      console.log(response.data)
+        this.contact = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
 
-    // created() {
-    //   axios.get(`http://localhost:8000/api/company`)
-    //   .then(response => {
-    //   console.log(response.data)
-    //     this.posts = response.data
-    //   })
-    //   .catch(e => {
-    //     this.errors.push(e)
-    //   })
-
-    // }
+    }
     }
     </script>
 

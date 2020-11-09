@@ -18,7 +18,7 @@ export const routes = [
     
         },
     {
-        path: '/test-view',
+        path: '/test_view/:tid',
         name: 'Test',
         component: Test
     
@@ -60,7 +60,7 @@ export const routes = [
     
         },
     {
-        path: '/blog_view',
+        path: '/blog_view/:bid',
         name: 'BlogView',
         component: BlogView
         
